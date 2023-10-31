@@ -8,7 +8,7 @@
 import UIKit
 
 final class ImageTableViewCell: UITableViewCell {
-    // #MARK: Properties
+    // #MARK: - Properties
     private let mainStackView: UIStackView = {
         let mainStackView = UIStackView()
         mainStackView.axis = .horizontal
@@ -35,7 +35,7 @@ final class ImageTableViewCell: UITableViewCell {
         return title
     }()
     
-    // #MARK: Init
+    // #MARK: - Init
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super .init(style: style, reuseIdentifier: reuseIdentifier)
         selectionStyle = .none
@@ -48,18 +48,19 @@ final class ImageTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // #MARK: PrepareForReuse
+    // #MARK: - PrepareForReuse
     override func prepareForReuse() {
         super.prepareForReuse()
         title.text = nil
     }
     
-    // #MARK: Configure
+    // #MARK: - Configure
     func configure(with model: ImageInfo) {
         title.text = model.title
         image.image = model.image
     }
     
+    // #MARK: - Private Methods
     private func setupView() {
         layer.shadowColor = UIColor.black.cgColor
         layer.shadowOpacity = 0.2

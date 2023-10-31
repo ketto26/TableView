@@ -9,57 +9,48 @@ import UIKit
 
 class ViewController: UIViewController{
     
-    // #MARK: Properties
-    private let plusButton: UIButton = {
-        let button = UIButton()
-        button.setTitle("+", for: .normal)
-        button.setTitleColor(.black, for: .normal)
-        button.backgroundColor = .tintColor
-        button.translatesAutoresizingMaskIntoConstraints = false
+    // #MARK: - Properties
+    private let plusButton: UIBarButtonItem = {
+        let button = UIBarButtonItem()
+        button.title = "+"
+        button.action = #selector(plusButtonClicked)
         return button
     }()
     
     private let tableView: UITableView = {
         let tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.backgroundColor = .blue
         return tableView
     }()
     
     private var image = ImageInfo.imageData
     
-    // #MARK: ViewLifeCycle
+    // #MARK: - ViewLifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationItem.title = "Movies"
+        navigationItem.rightBarButtonItem = plusButton
+        plusButton.target = self
         setupBackground()
+        setupTableView()
         subviewSetup()
-        plusButtonConstraints()
         tableViewConstraints()
     }
     
-    // #MARK: Private Methods
+    // #MARK: - Private Methods
     private func setupBackground() {
         view.backgroundColor = .systemBackground
     }
     
     private func subviewSetup() {
-        view.addSubview(plusButton)
         view.addSubview(tableView)
     }
-    private func plusButtonConstraints() {
-        NSLayoutConstraint.activate([
-            plusButton.topAnchor.constraint(equalToSystemSpacingBelow: view.topAnchor, multiplier: 10),
-            plusButton.trailingAnchor.constraint(equalToSystemSpacingAfter: view.trailingAnchor, multiplier: 10),
-            plusButton.heightAnchor.constraint(equalToConstant: 20),
-            plusButton.widthAnchor.constraint(equalToConstant: 70),
-            tableView.bottomAnchor.constraint(equalToSystemSpacingBelow: view.bottomAnchor, multiplier: -20)
-        ])
-    }
+    
     private func tableViewConstraints() {
         NSLayoutConstraint.activate([
-            tableView.topAnchor.constraint(equalToSystemSpacingBelow: plusButton.bottomAnchor, multiplier: 20),
-            tableView.leadingAnchor.constraint(equalToSystemSpacingAfter: view.leadingAnchor, multiplier: 10),
-            tableView.trailingAnchor.constraint(equalToSystemSpacingAfter: view.trailingAnchor, multiplier: 10),
+            tableView.topAnchor.constraint(equalToSystemSpacingBelow: view.topAnchor, multiplier: 15),
+            tableView.leadingAnchor.constraint(equalToSystemSpacingAfter: view.leadingAnchor, multiplier: 0),
+            tableView.rightAnchor.constraint(equalToSystemSpacingAfter: view.rightAnchor, multiplier: 0),
             tableView.bottomAnchor.constraint(equalToSystemSpacingBelow: view.bottomAnchor, multiplier: -20)
         ])
     }
@@ -67,15 +58,18 @@ class ViewController: UIViewController{
     private func setupTableView() {
         tableView.dataSource = self
         tableView.delegate = self
-        tableView.backgroundColor = .red
         tableView.register(ImageTableViewCell.self, forCellReuseIdentifier: "cell")
     }
     
- /*   private func setupButtonsAction() {
-        plusButton.addAction(UIAction(title: "", handler: { [weak self] action in let AddNewItemToListViewController = AddNewItemToListViewController() }), for: <#T##UIControl.Event#>)
-    } */
+    // #MARK: - Button Actions
+    @objc func plusButtonClicked() {
+        let addNewItemController = AddNewItemToListViewController()
+        navigationController?.pushViewController(addNewItemController, animated: true)
+           
+    }
 }
 
+// #MARK: - DataSource & Delegates
 extension ViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         image.count
@@ -92,7 +86,19 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 100
+        return 120
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let detailsViewController = ItemDetailsViewController()
+        detailsViewController.image = image[indexPath.row]
+        navigationController?.pushViewController(detailsViewController, animated: true)
     }
 }
 
+extension ViewController: AddNewItemDelegate {
+    func didAddItem(_ item: ImageInfo) {
+        image.append(item)
+        self.tableView.reloadData()
+    }
+}

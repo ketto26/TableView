@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0CAB7CD32AF0437E005D5CCF /* AddNewItemToListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CAB7CD22AF0437E005D5CCF /* AddNewItemToListViewController.swift */; };
+		0CAB7CD52AF07ED2005D5CCF /* ItemDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CAB7CD42AF07ED2005D5CCF /* ItemDetailsViewController.swift */; };
 		0CD680C22AEF6953007409A7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CD680C12AEF6953007409A7 /* AppDelegate.swift */; };
 		0CD680C42AEF6953007409A7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CD680C32AEF6953007409A7 /* SceneDelegate.swift */; };
 		0CD680C62AEF6953007409A7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CD680C52AEF6953007409A7 /* ViewController.swift */; };
@@ -38,6 +40,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0CAB7CD22AF0437E005D5CCF /* AddNewItemToListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewItemToListViewController.swift; sourceTree = "<group>"; };
+		0CAB7CD42AF07ED2005D5CCF /* ItemDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailsViewController.swift; sourceTree = "<group>"; };
 		0CD680BE2AEF6953007409A7 /* TableViewTask.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TableViewTask.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0CD680C12AEF6953007409A7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0CD680C32AEF6953007409A7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -106,7 +110,9 @@
 				0CD680C12AEF6953007409A7 /* AppDelegate.swift */,
 				0CD680C32AEF6953007409A7 /* SceneDelegate.swift */,
 				0CD680C52AEF6953007409A7 /* ViewController.swift */,
+				0CAB7CD22AF0437E005D5CCF /* AddNewItemToListViewController.swift */,
 				0CD680F12AEF6983007409A7 /* ImageModel.swift */,
+				0CAB7CD42AF07ED2005D5CCF /* ItemDetailsViewController.swift */,
 				0CD680F32AEF699F007409A7 /* ImagetableViewCell.swift */,
 				0CD680C72AEF6953007409A7 /* Main.storyboard */,
 				0CD680CA2AEF6955007409A7 /* Assets.xcassets */,
@@ -269,6 +275,8 @@
 				0CD680C22AEF6953007409A7 /* AppDelegate.swift in Sources */,
 				0CD680C42AEF6953007409A7 /* SceneDelegate.swift in Sources */,
 				0CD680F22AEF6983007409A7 /* ImageModel.swift in Sources */,
+				0CAB7CD52AF07ED2005D5CCF /* ItemDetailsViewController.swift in Sources */,
+				0CAB7CD32AF0437E005D5CCF /* AddNewItemToListViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
